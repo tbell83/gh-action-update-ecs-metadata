@@ -1,21 +1,42 @@
-# Hello world docker action
+# Update Release Metadata docker action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+Update the release metadata JSON for an ECS service.
 
 ## Inputs
 
-## `who-to-greet`
+## `aws-region`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The AWS region of the service. Default `"us-east-1"`.
 
-## Outputs
+## `ecs-cluster`
 
-## `time`
+**Required** The name of the ECS cluster.
 
-The time we greeted you.
+## `ecs-service`
+
+**Required** The name of the ECS service.
+
+## `metadata-bucket`
+
+**Required** The name of the metadata bucket.
+
+## `metadata-key`
+
+**Required** The key of the metadata object.
+
+## `release-tag`
+
+**Required** The release tag.
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v1
+```yaml
+uses: tbell83/gh-action-update-ecs-metadata@v0
 with:
-who-to-greet: 'Mona the Octocat'
+  aws-region: us-east-1
+  ecs-cluster: ecs-cluster-name
+  ecs-service: ecs-service-name
+  metadata-bucket: s3-bucket-name
+  metadata-key: s3-metadata-key
+  release-tag: release-tag
+```
